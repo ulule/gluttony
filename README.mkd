@@ -1,5 +1,11 @@
 # gluttony
 
+## Install
+
+```console
+go get -u github.com/discordapp/lilliput
+```
+
 ## Build
 
 ```console
@@ -25,3 +31,9 @@ If you want to keep the main process running to inspect memory:
 ```
 
 Of course, the memory will vary based on your number of iteration.
+
+## Activate pprof
+
+```console
+./gluttony -height 100 -width 100 -iteration 3 -input giphy.gif -pprof
+```
