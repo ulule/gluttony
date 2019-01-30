@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/discordapp/lilliput"
@@ -112,6 +113,7 @@ func main() {
 	var outputFilename string
 	var stretch bool
 	var iteration int
+	var sleep bool
 
 	flag.StringVar(&inputFilename, "input", "", "name of input file to resize/transcode")
 	flag.StringVar(&outputFilename, "output", "", "name of output file, also determines output type")
@@ -119,6 +121,7 @@ func main() {
 	flag.IntVar(&outputHeight, "height", 0, "height of output file")
 	flag.IntVar(&iteration, "iteration", 1, "number of iteration")
 	flag.BoolVar(&stretch, "stretch", false, "perform stretching resize instead of cropping")
+	flag.BoolVar(&sleep, "sleep", false, "sleep process running")
 	flag.Parse()
 
 	if inputFilename == "" {
@@ -147,5 +150,11 @@ func main() {
 		}
 
 		iteration -= 1
+	}
+
+	if sleep {
+		wg := sync.WaitGroup{}
+		wg.Add(1)
+		wg.Wait()
 	}
 }

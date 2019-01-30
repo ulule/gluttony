@@ -1,0 +1,27 @@
+# gluttony
+
+## Build
+
+```console
+make build
+```
+
+## Run
+
+```console
+./gluttony -height {height} -width {width} -iteration {number-of-iteration} -input giphy.gif
+```
+
+examples:
+
+```console
+./gluttony -height 100 -width 100 -iteration 3 -input giphy.gif
+```
+
+If you want to keep the main process running to inspect memory:
+
+```console
+./gluttony -height 100 -width 100 -iteration 3 -input giphy.gif -sleep
+```
+
+Of course, the memory will vary based on your number of iteration.
